@@ -1,20 +1,43 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import p5 from 'p5';
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.myRef = React.createRef()
+  }
+
+  Sketch = (p) => {
+    p.setup = () => {
+      p.createCanvas(window.innerWidth - 100, window.innerHeight - 150);
+      p.background("white");
+      p.strokeWeight(10);
+      p.stroke('black');
+    }
+
+    p.draw = () => {
+      if (p.mouseIsPressed) {
+        p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+      } else if (p.touchMoved) {
+        p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.myP5 = new p5(this.Sketch, this.myRef.current)
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <h1>Sketching App</h1>
+        <div ref={this.myRef} class="sketch">
+
+        </div>
       </div>
-    );
+    )
   }
 }
 
