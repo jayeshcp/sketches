@@ -1,13 +1,14 @@
 {
-  "name": "myapp",
+  "name": "sketches",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://jayeshcp.github.io/ReactDemo",
+  "homepage": "http://jayeshcp.github.io/sketches",
   "dependencies": {
     "p5": "^1.4.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
